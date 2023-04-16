@@ -17,6 +17,7 @@ namespace UnityVolumeRendering
 
         private int selectedRenderModeIndex = 0;
         private Vector3 rotation;
+        private Vector3 translation;
 
         private static EditVolumeGUI instance;
 
@@ -31,6 +32,7 @@ namespace UnityVolumeRendering
         private void Start()
         {
             rotation = targetObject.transform.rotation.eulerAngles;
+            translation = targetObject.transform.position;
         }
 
         public static void ShowWindow(VolumeRenderedObject volRendObj)
@@ -78,6 +80,13 @@ namespace UnityVolumeRendering
                 rotation.y = GUILayout.HorizontalSlider(rotation.y, 0.0f, 360.0f);
                 rotation.z = GUILayout.HorizontalSlider(rotation.z, 0.0f, 360.0f);
                 targetObject.transform.rotation = Quaternion.Euler(rotation);
+
+                // Translation
+                GUILayout.Label("Translation");
+                translation.x = GUILayout.HorizontalSlider(translation.x, -10.0f, 10.0f);
+                translation.y = GUILayout.HorizontalSlider(translation.y, -10.0f, 10.0f);
+                translation.z = GUILayout.HorizontalSlider(translation.z, -10.0f, 10.0f);
+                targetObject.transform.position = translation;
 
                 // Edit transfer function
                 if(GUILayout.Button("Edit transfer function", GUILayout.Width(150.0f)))

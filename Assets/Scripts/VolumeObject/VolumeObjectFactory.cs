@@ -13,7 +13,7 @@ namespace UnityVolumeRendering
             GameObject meshContainer = GameObject.Instantiate((GameObject)Resources.Load("VolumeContainer"));
             meshContainer.transform.parent = outerObject.transform;
             meshContainer.transform.localScale = Vector3.one;
-            meshContainer.transform.localPosition = Vector3.zero;
+            meshContainer.transform.localPosition = new Vector3(0.0f, 1.0f, 0.0f);
             meshContainer.transform.parent = outerObject.transform;
             outerObject.transform.localRotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
 
